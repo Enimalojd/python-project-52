@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %} 
+<div class="container wrapper flex-grow-1">
+
+    <h1 class="my-4">Вход</h1>
+        
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <input type="hidden" name="csrfmiddlewaretoken" value="o1AfV3OJO4iVqCcCU1kX8b3sgLvv6FoqGwhAPSn2f0BEdQMilxUvpF56ry7hqTGt">
+      <div class="mb-3"><label class="form-label" for="id_username">Имя пользователя</label><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" placeholder="Имя пользователя" required="" id="id_username"></div>
+      <div class="mb-3"><label class="form-label" for="id_password">Пароль</label><input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="Пароль" required="" id="id_password"></div>
+      <input class="btn btn-primary" type="submit" value="Войти">
+    </form>
+
+  </div>
+{% endblock %}
