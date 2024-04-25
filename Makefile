@@ -15,3 +15,11 @@ app-logs:
 .PHONY: app-down
 app-down:
 	${DC} -f ${APP_FILE} down
+
+.PHONY: migrate
+migrate:
+	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} migrate
+
+.PHONY: migrations
+migrations:
+	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} makemigrations

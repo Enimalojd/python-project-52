@@ -1,0 +1,6 @@
+*.pyc
+.vscode/
+.env
+venv/
+.git
+.gitignore
