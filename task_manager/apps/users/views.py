@@ -28,8 +28,8 @@ class UserUpdateView(SuccessMessageMixin, UpdateView):
     model = User
     fields = ('first_name', 'last_name', 'username')
     template_name = 'users/update_user.html'
-    success_url = reverse_lazy('users')
     success_message = 'Пользователь успешно обновлен'
+    success_url = reverse_lazy('users')
 
 
 class DeleteUserView(SuccessMessageMixin, DeleteView):
