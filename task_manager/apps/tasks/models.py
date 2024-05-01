@@ -11,8 +11,8 @@ class Task(models.Model):
     executor = models.ForeignKey(
         "users.User", on_delete=models.PROTECT, null=True, blank=True
     )
-    tag = models.ManyToManyField(
-        "tags.Tag", blank=True, related_name="tasks", verbose_name=_("Тэги")
+    labels = models.ManyToManyField(
+        "labels.Label", blank=True, related_name="tasks", verbose_name=_("Тэги")
     )
     author = models.ForeignKey(
         "users.User", on_delete=models.PROTECT, null=False, blank=False
