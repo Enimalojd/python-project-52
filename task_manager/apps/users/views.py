@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
-from django.contrib.auth.models import User
+from task_manager.apps.users.models import User
 from task_manager.apps.users.forms import UserForm
 from django.contrib.messages.views import SuccessMessageMixin
 
