@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container wrapper flex-grow-1">
     <h1 class="my-4">Статусы</h1>
-    <a class="btn btn-primary mb-3" href="/statuses/create/">Создать статус</a>
+    <a class="btn btn-primary mb-3" href="{% url 'create_status' %}">Создать статус</a>
     <table class="table table-striped">
         <thead>
             <tr>

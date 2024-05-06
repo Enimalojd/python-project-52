@@ -10,7 +10,8 @@ RUN apt update -y && \
     gcc \
     musl-dev \
     libpq-dev \
-    nmap
+    nmap \
+    gettext
 
 ADD pyproject.toml /app
 
