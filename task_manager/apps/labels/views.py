@@ -15,7 +15,7 @@ class Index(ListView):
 
 class LabelCreateView(SuccessMessageMixin, CreateView):
     form_class = LabelForm
-    template_name = "labels/create_lables.html"
+    template_name = "labels/create_label.html"
     success_url = reverse_lazy("labels")
     success_message = "Метка успешно создана"
     login_url = "login"
@@ -23,8 +23,8 @@ class LabelCreateView(SuccessMessageMixin, CreateView):
 
 class LabelUpdateView(SuccessMessageMixin, UpdateView):
     model = Label
-    fields = ("first_name", "last_name", "username")
-    template_name = "labels/update_lables.html"
+    fields = ("name",)
+    template_name = "labels/update_label.html"
     success_message = "Метка успешно обновлена"
     success_url = reverse_lazy("labels")
     login_url = "login"
@@ -32,7 +32,7 @@ class LabelUpdateView(SuccessMessageMixin, UpdateView):
 
 class LabelDeleteView(SuccessMessageMixin, DeleteView):
     model = Label
-    template_name = "labels/delete_lables.html"
+    template_name = "labels/delete_label.html"
     success_url = reverse_lazy("labels")
     success_message = "Метка успешно удалена"
     login_url = "login"
