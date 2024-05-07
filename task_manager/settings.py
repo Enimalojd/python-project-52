@@ -34,6 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "localhost",
+    '127.0.0.1',
 ]
 
 
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     "task_manager.apps.statuses",
     "task_manager.apps.tasks",
     "task_manager.apps.labels",
+    'django_filters',
 ]
 
 MIDDLEWARE = [

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 11:46+0300\n"
+"POT-Creation-Date: 2024-05-07 16:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,51 +19,132 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps/labels/views.py:23
+msgid "Label successfully created"
+msgstr "Метка успешно создана"
+
+#: apps/labels/views.py:31
+msgid "Label successfully updated"
+msgstr "Метка успешно обновлена"
+
+#: apps/labels/views.py:40
+msgid "Label successfully deleted"
+msgstr "Метка успешно удалена"
+
+#: apps/statuses/views.py:23
+msgid "Status successfully created"
+msgstr "Статус успешно создан"
+
+#: apps/statuses/views.py:32
+msgid "Status successfully updated"
+msgstr "Статус успешно обновлён"
+
+#: apps/statuses/views.py:40
+msgid "Status successfully deleted"
+msgstr "Статус успешно удалён"
+
+#: apps/tasks/views.py:28
+msgid "Task successfully created"
+msgstr "Задача успешно создана"
+
+#: apps/tasks/views.py:37
+msgid "Task successfully updated"
+msgstr "Задача успешно обновлена"
+
+#: apps/tasks/views.py:45
+msgid "Task successfully deleted"
+msgstr "Задача успешно удалена"
+
+#: apps/users/views.py:26
+msgid "User successfully created"
+msgstr "Пользователь успешно создан"
+
+#: apps/users/views.py:33
+msgid "User successfully updated"
+msgstr "Пользователь успешно обновлён"
+
+#: apps/users/views.py:41
+msgid "User successfully deleted"
+msgstr "Пользователь успешно удалён"
+
 #: templates/auth/login.html:6
 msgid "Login"
-msgstr ""
+msgstr "Вход"
 
 #: templates/auth/login.html:10
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: templates/auth/login.html:13
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: templates/labels/create_label.html:5 templates/labels/labels.html:6
 msgid "Create label"
-msgstr ""
+msgstr "Создать метку"
 
 #: templates/labels/create_label.html:8 templates/labels/labels.html:11
-#: templates/labels/update_label.html:8
+#: templates/labels/update_label.html:8 templates/tasks/tasks.html:21
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: templates/labels/delete_label.html:5
 msgid "Delete label"
-msgstr ""
+msgstr "Удалить метку"
 
 #: templates/labels/delete_label.html:6
 msgid "Are you sure you want to delete"
-msgstr ""
+msgstr "Вы уверены, что хотите удалить"
 
 #: templates/labels/labels.html:5
 msgid "Labels"
-msgstr ""
+msgstr "Метки"
 
 #: templates/labels/labels.html:12
 msgid "Date created"
-msgstr ""
+msgstr "Дата создания"
 
-#: templates/labels/labels.html:23
+#: templates/labels/labels.html:23 templates/tasks/tasks.html:41
 msgid "Update"
-msgstr ""
+msgstr "Обновить"
 
-#: templates/labels/labels.html:25
+#: templates/labels/labels.html:25 templates/tasks/tasks.html:42
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: templates/labels/update_label.html:5
 msgid "Update label"
-msgstr ""
+msgstr "Обновить метку"
+
+#: templates/tasks/tasks.html:5
+msgid "Tasks"
+msgstr "Задачи"
+
+#: templates/tasks/tasks.html:6
+#, fuzzy
+#| msgid "Create label"
+msgid "Create task"
+msgstr "Создать метку"
+
+#: templates/tasks/tasks.html:13
+msgid "Show"
+msgstr "Показать"
+
+#: templates/tasks/tasks.html:22
+msgid "Status"
+msgstr "Статус"
+
+#: templates/tasks/tasks.html:23
+msgid "Author"
+msgstr "Автор"
+
+#: templates/tasks/tasks.html:24
+msgid "Executor"
+msgstr "Исполняющий"
+
+#: templates/tasks/tasks.html:25
+#, fuzzy
+#| msgid "Date created"
+msgid "Date of creation"
+msgstr "Дата создания"

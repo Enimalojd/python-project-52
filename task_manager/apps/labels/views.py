@@ -1,20 +1,22 @@
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
-from task_manager.apps.labels.forms import LabelForm
-from task_manager.apps.labels.models import Label
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
 
+from task_manager.apps.labels.forms import LabelForm
+from task_manager.apps.labels.models import Label
+from task_manager.mixins import CustomLoginRequiredMixin
 
-class Index(ListView):
+
+class Index(CustomLoginRequiredMixin, ListView):
     model = Label
     template_name = "labels/labels.html"
     context_object_name = "labels"
     login_url = "login"
 
 
-class LabelCreateView(SuccessMessageMixin, CreateView):
+class LabelCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = LabelForm
     template_name = "labels/create_label.html"
     success_url = reverse_lazy("labels")
@@ -22,7 +24,7 @@ class LabelCreateView(SuccessMessageMixin, CreateView):
     login_url = "login"
 
 
-class LabelUpdateView(SuccessMessageMixin, UpdateView):
+class LabelUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Label
     fields = ("name",)
     template_name = "labels/update_label.html"
@@ -31,7 +33,7 @@ class LabelUpdateView(SuccessMessageMixin, UpdateView):
     login_url = "login"
 
 
-class LabelDeleteView(SuccessMessageMixin, DeleteView):
+class LabelDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Label
     template_name = "labels/delete_label.html"
     success_url = reverse_lazy("labels")

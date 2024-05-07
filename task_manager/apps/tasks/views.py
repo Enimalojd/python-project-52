@@ -1,24 +1,27 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
+from django_filters.views import FilterView
 
 from task_manager.apps.tasks.forms import TaskForm
 from task_manager.apps.tasks.models import Task
+from task_manager.filters import TaskFilter
+from task_manager.mixins import CustomLoginRequiredMixin
 
 
-class Index(LoginRequiredMixin, ListView):
+class Index(CustomLoginRequiredMixin, ListView, FilterView):
     model = Task
     template_name = "tasks/tasks.html"
     context_object_name = "tasks"
     login_url = "login"
+    filterset_class = TaskFilter
+    context_object_name = 'tasks'
 
 
-class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = TaskForm
     template_name = "tasks/create_task.html"
     success_url = reverse_lazy("tasks")
@@ -26,7 +29,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = "login"
 
 
-class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     fields = ("name",)
     template_name = "tasks/update_task.html"
@@ -35,7 +38,7 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = "login"
 
 
-class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = "tasks/delete_task.html"
     success_url = reverse_lazy("tasks")
@@ -43,7 +46,7 @@ class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     login_url = "login"
 
 
-class TaskDetailView(LoginRequiredMixin, DetailView):
+class TaskDetailView(CustomLoginRequiredMixin, DetailView):
     model = Task
     template_name = "tasks/current_task.html"
     login_url = "login"
