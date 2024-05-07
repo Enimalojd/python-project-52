@@ -6,6 +6,7 @@ from task_manager.apps.statuses.forms import StatusForm
 from task_manager.apps.statuses.models import Status
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.translation import gettext_lazy as _
 
 
 class Index(LoginRequiredMixin, ListView):
@@ -19,7 +20,7 @@ class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = StatusForm
     template_name = "statuses/create_status.html"
     success_url = reverse_lazy("statuses")
-    success_message = "Статус успешно создан"
+    success_message = _("Status successfully created")
     login_url = "login"
 
 
@@ -28,7 +29,7 @@ class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     fields = ("name",)
     template_name = "statuses/update_status.html"
     success_url = reverse_lazy("statuses")
-    success_message = "Статус успешно изменён"
+    success_message = _("Status successfully updated")
     login_url = "login"
 
 
@@ -36,5 +37,5 @@ class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Status
     template_name = "statuses/delete_status.html"
     success_url = reverse_lazy("statuses")
-    success_message = "Статус успешно удален"
+    success_message = _("Status successfully deleted")
     login_url = "login"

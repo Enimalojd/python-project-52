@@ -5,6 +5,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.apps.tasks.forms import TaskForm
 from task_manager.apps.tasks.models import Task
@@ -21,7 +22,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = TaskForm
     template_name = "tasks/create_task.html"
     success_url = reverse_lazy("tasks")
-    success_message = "Задача успешно создана"
+    success_message = _("Task successfully created")
     login_url = "login"
 
 
@@ -30,7 +31,7 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     fields = ("name",)
     template_name = "tasks/update_task.html"
     success_url = reverse_lazy("tasks")
-    success_message = "Задача успешно изменена"
+    success_message = _("Task successfully updated")
     login_url = "login"
 
 
@@ -38,7 +39,7 @@ class TaskDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = "tasks/delete_task.html"
     success_url = reverse_lazy("tasks")
-    success_message = "Задача успешно удалена"
+    success_message = _("Task successfully deleted")
     login_url = "login"
 
 
