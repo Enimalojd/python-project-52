@@ -7,24 +7,20 @@ from task_manager.apps.users.models import User
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
-    description = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=150, unique=True)
+    description = models.TextField(max_length=300)
     status = models.ForeignKey(
-        Status, on_delete=models.PROTECT, null=False, blank=False
+        Status, on_delete=models.PROTECT
     )
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        null=True,
-        blank=True,
         related_name="executor",
     )
     labels = models.ManyToManyField(Label, blank=True)
     author = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        null=False,
-        blank=False,
         related_name="author",
     )
     created_at = models.DateTimeField(auto_now_add=True)

@@ -8,11 +8,11 @@ from django_filters.views import FilterView
 
 from task_manager.apps.tasks.forms import TaskForm
 from task_manager.apps.tasks.models import Task
-from task_manager.filters import TaskFilter
+from task_manager.apps.tasks.filters import TaskFilter
 from task_manager.mixins import CustomLoginRequiredMixin
 
 
-class Index(CustomLoginRequiredMixin, ListView, FilterView):
+class Index(CustomLoginRequiredMixin, FilterView):
     model = Task
     template_name = "tasks/tasks.html"
     context_object_name = "tasks"
