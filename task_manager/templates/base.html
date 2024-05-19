@@ -9,20 +9,18 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Менеджер задач</title>
+    <title>{% translate "Task manager" %}</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-      {% include 'navbar.html' %}
-
-  
-      <div class="container wrapper flex-grow-1">
-          <div class="alert-{{ message.tags }}" role="alert">
-              {% bootstrap_messages %}
-          </div>
-              {% block content %}
-              {% endblock %}
-      </div>
-  </body>
+    {% include 'navbar.html' %}
+    <div class="container wrapper flex-grow-1">
+        <div class="alert-{{ message.tags }}" role="alert">
+            {% bootstrap_messages %}
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
 
 </html>

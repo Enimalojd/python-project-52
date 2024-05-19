@@ -9,7 +9,7 @@ from django_filters.views import FilterView
 from task_manager.apps.tasks.forms import TaskForm
 from task_manager.apps.tasks.models import Task
 from task_manager.apps.tasks.filters import TaskFilter
-from task_manager.mixins import CustomLoginRequiredMixin
+from task_manager.mixins import CustomLoginRequiredMixin, DeleteMixin
 
 
 class Index(CustomLoginRequiredMixin, FilterView):
@@ -18,7 +18,7 @@ class Index(CustomLoginRequiredMixin, FilterView):
     context_object_name = "tasks"
     login_url = "login"
     filterset_class = TaskFilter
-    context_object_name = 'tasks'
+    context_object_name = "tasks"
 
 
 class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -27,6 +27,10 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy("tasks")
     success_message = _("Task successfully created")
     login_url = "login"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -38,7 +42,7 @@ class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = "login"
 
 
-class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteMixin):
     model = Task
     template_name = "tasks/delete_task.html"
     success_url = reverse_lazy("tasks")
@@ -51,8 +55,3 @@ class TaskDetailView(CustomLoginRequiredMixin, DetailView):
     template_name = "tasks/current_task.html"
     login_url = "login"
     context_object_name = "task"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["labels"] = self.Label.object.filter(task=self.object)
-        return context

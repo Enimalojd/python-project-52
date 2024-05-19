@@ -3,9 +3,11 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
 from task_manager.apps.users.models import User
-from task_manager.apps.users.forms import UserForm #TODO imports
+from task_manager.apps.users.forms import UserForm  # TODO imports
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
+
+from task_manager.mixins import DeleteMixin
 
 
 class Index(ListView):
@@ -28,14 +30,16 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 class UserUpdateView(SuccessMessageMixin, UpdateView):
     model = User
-    fields = ("first_name", "last_name", "username")
+    form_class = UserForm
     template_name = "users/update_user.html"
     success_message = _("User successfully updated")
     success_url = reverse_lazy("users")
 
 
-class UserDeleteView(SuccessMessageMixin, DeleteView):
+class UserDeleteView(SuccessMessageMixin, DeleteMixin):
     model = User
     template_name = "users/delete_user.html"
     success_url = reverse_lazy("index")
     success_message = _("User successfully deleted")
+    error_message = _("Cannot delete user because it is in use")
+    error_url = reverse_lazy("users")
