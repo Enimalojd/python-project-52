@@ -1,12 +1,12 @@
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
 
 from task_manager.apps.labels.forms import LabelForm
 from task_manager.apps.labels.models import Label
-from task_manager.mixins import CustomLoginRequiredMixin
+from task_manager.mixins import CustomLoginRequiredMixin, DeleteMixin
 
 
 class Index(CustomLoginRequiredMixin, ListView):
@@ -33,9 +33,11 @@ class LabelUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView)
     login_url = "login"
 
 
-class LabelDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class LabelDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteMixin):
     model = Label
     template_name = "labels/delete_label.html"
     success_url = reverse_lazy("labels")
     success_message = _("Label successfully deleted")
     login_url = "login"
+    error_message = _("It is not possible to delete the label because it is being used")
+    error_url = reverse_lazy("labels")

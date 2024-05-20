@@ -1,13 +1,12 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView
-from task_manager.apps.users.models import User
-from task_manager.apps.users.forms import UserForm  # TODO imports
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
 
 from task_manager.mixins import DeleteMixin
+from task_manager.apps.users.models import User
+from task_manager.apps.users.forms import UserForm
 
 
 class Index(ListView):

@@ -1,7 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
 from django_filters.views import FilterView
@@ -9,6 +8,7 @@ from django_filters.views import FilterView
 from task_manager.apps.tasks.forms import TaskForm
 from task_manager.apps.tasks.models import Task
 from task_manager.apps.tasks.filters import TaskFilter
+from task_manager.apps.users.models import User
 from task_manager.mixins import CustomLoginRequiredMixin, DeleteMixin
 
 
@@ -29,17 +29,18 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = "login"
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        user = self.request.user
+        form.instance.author = User.objects.get(pk=user.pk)
         return super().form_valid(form)
 
 
 class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
-    fields = ("name",)
     template_name = "tasks/update_task.html"
     success_url = reverse_lazy("tasks")
     success_message = _("Task successfully updated")
     login_url = "login"
+    form_class = TaskForm
 
 
 class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteMixin):
@@ -55,3 +56,4 @@ class TaskDetailView(CustomLoginRequiredMixin, DetailView):
     template_name = "tasks/current_task.html"
     login_url = "login"
     context_object_name = "task"
+    
