@@ -10,7 +10,7 @@ class CustomLoginRequiredMixin(LoginRequiredMixin):
 
     permission_denied_message = "You are not logged in, please log in."
 
-    def dispatch(self, request, *args, **kwargs):
+    def dispatch(self, request: HttpRequest, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.add_message(
                 request, messages.ERROR, self.permission_denied_message
