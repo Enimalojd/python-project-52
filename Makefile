@@ -3,6 +3,8 @@ LOGS = docker logs
 ENV = --env-file .env
 APP_FILE = docker_compose/app.yaml
 APP_CONTAINER = main-app
+EXEC = docker exec -it
+MANAGE_PY = python manage.py
 
 .PHONY: app
 app:
@@ -23,3 +25,11 @@ migrate:
 .PHONY: migrations
 migrations:
 	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} makemigrations
+
+.PHONY: superuser
+superuser:
+	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} createsuperuser
+
+.PHONY: run-test
+run-test:
+	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} test
