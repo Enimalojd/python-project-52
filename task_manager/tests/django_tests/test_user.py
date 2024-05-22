@@ -6,7 +6,7 @@ from task_manager.apps.users.models import User
 
 class UserTest(TestCase):
 
-    register_data = {
+    registeration_data = {
         "first_name": "Test",
         "last_name": "User",
         "username": "testuser",
@@ -24,7 +24,7 @@ class UserTest(TestCase):
         self.assertTemplateUsed(response, "users/create_user.html")
 
     def test_create_user(self):
-        response = self.client.post(reverse_lazy("create_user"), data=self.register_data)
+        response = self.client.post(reverse_lazy("create_user"), data=self.registeration_data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy("login"))
         self.assertTrue(User.objects.filter(username="testuser").exists())

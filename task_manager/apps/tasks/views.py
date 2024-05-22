@@ -34,6 +34,7 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
+
 class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     template_name = "tasks/update_task.html"
@@ -56,4 +57,9 @@ class TaskDetailView(CustomLoginRequiredMixin, DetailView):
     template_name = "tasks/current_task.html"
     login_url = "login"
     context_object_name = "task"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["labels"] = self.object.labels.filter()
+        return context
     

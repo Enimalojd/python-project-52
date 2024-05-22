@@ -23,7 +23,7 @@ class MainTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "auth/login.html")
     
-    def test_register_page(self):
+    def test_registeration_page(self):
         response = self.client.get(reverse_lazy("create_user"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "users/create_user.html")
