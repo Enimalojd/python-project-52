@@ -20,7 +20,7 @@ class LabelCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView)
     form_class = LabelForm
     template_name = "labels/create_label.html"
     success_url = reverse_lazy("labels")
-    success_message = _('Label successfully created')
+    success_message = _("Label successfully created")
     login_url = "login"
 
 

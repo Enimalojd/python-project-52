@@ -34,7 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "localhost",
-    '127.0.0.1',
+    "127.0.0.1",
     "webserver",
 ]
 
@@ -54,19 +54,18 @@ INSTALLED_APPS = [
     "task_manager.apps.statuses",
     "task_manager.apps.tasks",
     "task_manager.apps.labels",
-    'django_filters',
+    "django_filters",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    'django.middleware.locale.LocaleMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
 ]
 
 ROOT_URLCONF = "task_manager.urls"
@@ -133,7 +132,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-LANGUAGES = (("en", "English"), ("ru", "Russian"),)
+LANGUAGES = (
+    ("en", "English"),
+    ("ru", "Russian"),
+)
 
 LOCALE_PATHS = [BASE_DIR / "task_manager/locale"]
 

@@ -9,14 +9,21 @@ from task_manager.apps.users.models import User
 class Task(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name=_("Name"))
     description = models.TextField(max_length=300, verbose_name=_("Description"))
-    status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="statuses", verbose_name=_("Status"))
+    status = models.ForeignKey(
+        Status,
+        on_delete=models.PROTECT,
+        related_name="statuses",
+        verbose_name=_("Status"),
+    )
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
         related_name="executor",
         verbose_name=_("Executor"),
     )
-    labels = models.ManyToManyField(Label, blank=True, related_name="labels", verbose_name=_("Labels"))
+    labels = models.ManyToManyField(
+        Label, blank=True, related_name="labels", verbose_name=_("Labels")
+    )
     author = models.ForeignKey(
         User,
         on_delete=models.PROTECT,

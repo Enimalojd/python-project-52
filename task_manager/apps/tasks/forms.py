@@ -16,6 +16,7 @@ class TaskForm(forms.ModelForm):
         queryset=Label.objects.all(),
         required=False,
     )
+
     class Meta:
         model = Task
         fields = (

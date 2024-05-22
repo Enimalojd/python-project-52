@@ -12,7 +12,7 @@ class MainTest(TestCase):
         response = self.client.get(reverse_lazy("index"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "index.html")
-    
+
     def test_users_page(self):
         response = self.client.get(reverse_lazy("users"))
         self.assertEqual(response.status_code, 200)
@@ -22,9 +22,8 @@ class MainTest(TestCase):
         response = self.client.get(reverse_lazy("login"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "auth/login.html")
-    
+
     def test_registeration_page(self):
         response = self.client.get(reverse_lazy("create_user"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "users/create_user.html")
-

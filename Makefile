@@ -33,3 +33,7 @@ superuser:
 .PHONY: run-test
 run-test:
 	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} test
+
+.PHONY: lint
+lint:
+	${EXEC} ${APP_CONTAINER} flake8

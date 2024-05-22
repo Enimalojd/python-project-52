@@ -17,14 +17,19 @@ class MainTest(TestCase):
         self.user = User.objects.create(username=self.login_data["username"])
         self.user.set_password(self.login_data["password"])
         self.user.save()
-    
+
     def test_login_page(self):
         response = self.client.get(reverse_lazy("login"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "auth/login.html")
-    
+
     def test_login(self):
         response = self.client.post(reverse_lazy("login"), data=self.login_data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy("index"))
-        self.assertTrue(self.client.login(username=self.login_data["username"], password=self.login_data["password"]))
+        self.assertTrue(
+            self.client.login(
+                username=self.login_data["username"],
+                password=self.login_data["password"],
+            )
+        )

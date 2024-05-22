@@ -1,4 +1,3 @@
-from django.http.response import HttpResponse as HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
