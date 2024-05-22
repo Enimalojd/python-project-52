@@ -22,7 +22,12 @@ class Task(models.Model):
         verbose_name=_("Executor"),
     )
     labels = models.ManyToManyField(
-        Label, blank=True, related_name="labels", verbose_name=_("Labels")
+        Label,
+        blank=True,
+        related_name="labels",
+        verbose_name=_("Labels"),
+        through="TaskLabel",
+        through_fields=("task", "label"),
     )
     author = models.ForeignKey(
         User,
@@ -34,3 +39,8 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class TaskLabel(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    label = models.ForeignKey(Label, on_delete=models.CASCADE)
