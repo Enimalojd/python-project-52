@@ -20,9 +20,9 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = (
-            _("name"),
-            _("description"),
-            _("status"),
-            _("executor"),
-            _("labels"),
+            "name",
+            "description",
+            "status",
+            "executor",
+            "labels",
         )
