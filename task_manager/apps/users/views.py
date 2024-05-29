@@ -38,7 +38,7 @@ class UserUpdateView(SuccessMessageMixin, UpdateView):
 class UserDeleteView(SuccessMessageMixin, DeleteMixin):
     model = User
     template_name = "users/delete_user.html"
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("users")
     success_message = _("User successfully deleted")
     error_message = _("Cannot delete user because it is in use")
     error_url = reverse_lazy("users")
