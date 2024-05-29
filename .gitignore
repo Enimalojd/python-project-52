@@ -2,3 +2,4 @@
 .vscode/
 .env
 .venv/
+task_manager/api/*
