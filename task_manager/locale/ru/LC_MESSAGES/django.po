@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 23:12+0300\n"
+"POT-Creation-Date: 2024-05-29 23:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,7 +141,7 @@ msgstr "Пользователь успешно удален"
 msgid "Cannot delete user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: templates/auth/login.html:6 templates/navbar.html:31
+#: templates/auth/login.html:6 templates/navbar.html:32
 msgid "Login"
 msgstr "Вход"
 
@@ -167,7 +167,6 @@ msgstr "Создать метку"
 
 #: templates/labels/create_label.html:10
 #: templates/statuses/create_status.html:10 templates/tasks/create_task.html:9
-#: templates/users/create_user.html:10
 msgid "Create"
 msgstr "Создать"
 
@@ -213,11 +212,11 @@ msgstr "Статусы"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: templates/navbar.html:26
+#: templates/navbar.html:26 templates/navbar.html:27
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/navbar.html:34
+#: templates/navbar.html:35
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -257,10 +256,14 @@ msgstr "Дата создания"
 msgid "Update task"
 msgstr "Изменить задачу"
 
-#: views.py:19
+#: templates/users/create_user.html:10
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: views.py:20
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: views.py:24
+#: views.py:25
 msgid "You are logged out"
 msgstr "Вы разлогинены"
