@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 13:19+0300\n"
+"POT-Creation-Date: 2024-05-29 23:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: apps/labels/models.py:7 apps/statuses/models.py:7 apps/tasks/models.py:10
 #: templates/labels/labels.html:11 templates/statuses/statuses.html:11
 #: templates/tasks/tasks.html:21
@@ -120,7 +121,9 @@ msgstr "Имя пользователя"
 
 #: apps/users/forms.py:15
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-msgstr "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_."
+msgstr ""
+"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
 
 #: apps/users/views.py:27
 msgid "User successfully created"
@@ -138,10 +141,13 @@ msgstr "Пользователь успешно удален"
 msgid "Cannot delete user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: templates/auth/login.html:6 templates/auth/login.html:10
-#: templates/navbar.html:31
+#: templates/auth/login.html:6 templates/navbar.html:31
 msgid "Login"
 msgstr "Вход"
+
+#: templates/auth/login.html:10
+msgid "Log in"
+msgstr "Войти"
 
 #: templates/base.html:12 templates/index.html:6 templates/navbar.html:3
 msgid "Task manager"
