@@ -21,9 +21,10 @@
         <a class="nav-link" href="{% url 'tasks' %}">{% trans 'Tasks' %}</a>
       </li>
       <li class="nav-item">
-        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        <form action="{% url 'logout' %}" method="post">
           {% csrf_token %}
-          <button class="btn nav-link" type="submit">{% trans 'Logout' %}</button>
+          <input type="hidden" name="extra_submit_param" value="{% trans 'Logout' %}">
+          <input class="btn nav-link" type="submit" value="{% trans 'Logout' %}">
         </form>
       </li>
       {% else %}
