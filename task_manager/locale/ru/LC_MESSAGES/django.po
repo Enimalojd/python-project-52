@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 23:46+0300\n"
+"POT-Creation-Date: 2024-05-30 00:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,8 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps/labels/models.py:7 apps/statuses/models.py:7 apps/tasks/models.py:10
+#: apps/labels/forms.py:8 apps/labels/models.py:7 apps/statuses/forms.py:8
+#: apps/statuses/models.py:7 apps/tasks/forms.py:11 apps/tasks/models.py:10
 #: templates/labels/labels.html:11 templates/statuses/statuses.html:11
 #: templates/tasks/tasks.html:21
 msgid "Name"
@@ -71,22 +72,23 @@ msgstr "Метка"
 msgid "Only own tasks"
 msgstr "Только свои задачи"
 
-#: apps/tasks/models.py:11
+#: apps/tasks/forms.py:12 apps/tasks/models.py:11
 msgid "Description"
 msgstr "Описание"
 
-#: apps/tasks/models.py:16 templates/tasks/current_task.html:23
-#: templates/tasks/tasks.html:22
+#: apps/tasks/forms.py:13 apps/tasks/models.py:16
+#: templates/tasks/current_task.html:23 templates/tasks/tasks.html:22
 msgid "Status"
 msgstr "Статус"
 
-#: apps/tasks/models.py:22 templates/tasks/current_task.html:19
-#: templates/tasks/tasks.html:24
+#: apps/tasks/forms.py:14 apps/tasks/models.py:22
+#: templates/tasks/current_task.html:19 templates/tasks/tasks.html:24
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: apps/tasks/models.py:28 templates/labels/labels.html:5
-#: templates/navbar.html:18 templates/tasks/current_task.html:32
+#: apps/tasks/forms.py:18 apps/tasks/models.py:28
+#: templates/labels/labels.html:5 templates/navbar.html:18
+#: templates/tasks/current_task.html:32
 msgid "Labels"
 msgstr "Метки"
 
@@ -179,6 +181,11 @@ msgstr "Удалить метку"
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
+#: templates/labels/delete_label.html:9 templates/statuses/delete_status.html:9
+#: templates/tasks/delete_task.html:9 templates/users/delete_user.html:9
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
 #: templates/labels/labels.html:12 templates/statuses/statuses.html:12
 msgid "Date created"
 msgstr "Дата создания"
@@ -190,9 +197,8 @@ msgstr "Дата создания"
 msgid "Update"
 msgstr "Изменить"
 
-#: templates/labels/labels.html:25 templates/statuses/delete_status.html:9
-#: templates/statuses/statuses.html:25 templates/tasks/current_task.html:44
-#: templates/tasks/delete_task.html:9 templates/tasks/tasks.html:43
+#: templates/labels/labels.html:25 templates/statuses/statuses.html:25
+#: templates/tasks/current_task.html:44 templates/tasks/tasks.html:43
 msgid "Delete"
 msgstr "Удалить"
 
