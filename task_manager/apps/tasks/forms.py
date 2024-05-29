@@ -8,13 +8,14 @@ from task_manager.apps.users.models import User
 
 
 class TaskForm(forms.ModelForm):
-    name = forms.CharField(required=True, max_length=255)
-    description = forms.CharField(widget=forms.Textarea)
-    status = forms.ModelChoiceField(queryset=Status.objects.all())
-    executor = forms.ModelChoiceField(queryset=User.objects.all())
+    name = forms.CharField(required=True, max_length=255, label=_("Name"))
+    description = forms.CharField(widget=forms.Textarea, label=_("Description"))
+    status = forms.ModelChoiceField(queryset=Status.objects.all(), label=_("Status"))
+    executor = forms.ModelChoiceField(queryset=User.objects.all(), label=_("Executor"))
     labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
         required=False,
+        label=_("Labels"),
     )
 
     class Meta:
