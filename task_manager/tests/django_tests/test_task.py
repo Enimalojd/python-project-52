@@ -22,8 +22,15 @@ class TaskCRUDTest(TestCase):
             executor=self.user,
             status=self.status,
         )
+        self.updated_task_data = {
+            "name": "Updated task",
+            "description": "Updated description",
+            "author": self.user.pk,
+            "executor": self.user.pk,
+            "status": self.status.pk,
+        }
 
-    def test_create_task(self):
+    def test_create_task_view(self):
         response = self.client.post(
             reverse_lazy("create_task"),
             data={
@@ -37,16 +44,16 @@ class TaskCRUDTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Task.objects.filter(name="New task").exists())
 
-    def test_update_task(self):
+    def test_update_task_view(self):
         response = self.client.post(
             reverse_lazy("update_task", kwargs={"pk": self.task.pk}),
-            data={"name": "Updated task"},
+            data=self.updated_task_data,
         )
         self.assertEqual(response.status_code, 302)
         self.task.refresh_from_db()
         self.assertTrue(Task.objects.filter(name="Updated task").exists())
 
-    def test_delete_task(self):
+    def test_delete_task_view(self):
         response = self.client.post(
             reverse_lazy("delete_task", kwargs={"pk": self.task.pk})
         )
