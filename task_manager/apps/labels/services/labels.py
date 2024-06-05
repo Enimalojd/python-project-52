@@ -7,10 +7,12 @@ from task_manager.apps.labels.models import Label as LabelModel
 
 class BaseLabelService(ABC):
     @abstractmethod
-    def get_label_list(self) -> Iterable[Label]: ...
+    def get_label_list(self) -> Iterable[Label]:
+        raise NotImplementedError()
 
     @abstractmethod
-    def get_label_count(self) -> int: ...
+    def get_label_count(self) -> int:
+        raise NotImplementedError()
 
 
 class ORMLabelService(BaseLabelService):

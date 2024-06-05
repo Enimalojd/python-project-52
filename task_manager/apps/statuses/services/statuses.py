@@ -8,10 +8,12 @@ from task_manager.apps.statuses.models import Status as StatusModel
 class BaseStatusService(ABC):
 
     @abstractmethod
-    def get_status_list(self) -> Iterable[Status]: ...
+    def get_status_list(self) -> Iterable[Status]:
+        raise NotImplementedError()
 
     @abstractmethod
-    def get_status_count(self) -> int: ...
+    def get_status_count(self) -> int:
+        raise NotImplementedError()
 
 
 class ORMStatusService(BaseStatusService):

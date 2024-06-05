@@ -8,10 +8,12 @@ from task_manager.apps.tasks.models import Task as TaskModel
 class BaseTaskService(ABC):
 
     @abstractmethod
-    def get_task_list(self) -> Iterable[Task]: ...
+    def get_task_list(self) -> Iterable[Task]:
+        raise NotImplementedError()
 
     @abstractmethod
-    def get_task_count(self) -> int: ...
+    def get_task_count(self) -> int:
+        raise NotImplementedError()
 
 
 class ORMTaskService(BaseTaskService):

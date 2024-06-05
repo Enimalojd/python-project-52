@@ -8,10 +8,12 @@ from task_manager.apps.users.models import User as UserModel
 class BaseUserService(ABC):
 
     @abstractmethod
-    def get_user_list(self) -> Iterable[User]: ...
+    def get_user_list(self) -> Iterable[User]:
+        raise NotImplementedError()
 
     @abstractmethod
-    def get_user_count(self) -> int: ...
+    def get_user_count(self) -> int:
+        raise NotImplementedError()
 
 
 class ORMUserService(BaseUserService):
