@@ -15,8 +15,8 @@ django-bootstrap5 = "^24.1"
 dj-database-url = "^2.1.0"
 python-dotenv = "^1.0.1"
 django-filter = "^24.2"
-rollbar = "^0.16.3"
 psycopg2-binary = "^2.9.9"
+django-ninja = "^1.1.0"
 
 
 [tool.poetry.group.dev.dependencies]

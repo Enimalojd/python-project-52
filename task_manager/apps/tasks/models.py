@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from task_manager.apps.labels.models import Label
 from task_manager.apps.statuses.models import Status
 from task_manager.apps.users.models import User
+from task_manager.apps.tasks.entities import Task as TaskEntity
 
 
 class Task(models.Model):
@@ -36,6 +37,18 @@ class Task(models.Model):
         verbose_name=_("Author"),
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
+
+    def to_entity(self):
+        return TaskEntity(
+            id=self.id,
+            name=self.name,
+            description=self.description,
+            status=self.status.name,
+            author=self.author.username,
+            executor=self.executor.username,
+            labels=[self.labels.all()],
+            created_at=self.created_at,
+        )
 
     def __str__(self):
         return self.name
