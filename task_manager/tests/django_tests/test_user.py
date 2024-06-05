@@ -53,6 +53,8 @@ class UserTest(TestCase):
     def test_update_user_view(self):
         user = User.objects.filter(username="baseuser").first()
         pk = user.pk
-        response = self.client.post(reverse_lazy("update_user", kwargs={"pk": pk}), data=self.updated_data)
+        response = self.client.post(
+            reverse_lazy("update_user", kwargs={"pk": pk}), data=self.updated_data
+        )
         self.assertEqual(response.status_code, 302)
         self.assertTrue(User.objects.filter(first_name="Updated name").exists())

@@ -28,10 +28,9 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = _("Task successfully created")
     login_url = "login"
 
-    def form_valid(self, form):
+    def form_valid(self, form) -> bool:
         user = self.request.user
         form.instance.author = User.objects.get(pk=user.pk)
-        # print(f"Executor: {form.instance.executor}")
         return super().form_valid(form)
 
 
@@ -58,7 +57,7 @@ class TaskDetailView(CustomLoginRequiredMixin, DetailView):
     login_url = "login"
     context_object_name = "task"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs) -> dict:
         context = super().get_context_data(**kwargs)
         context["labels"] = self.object.labels.filter()
         return context

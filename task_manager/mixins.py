@@ -10,7 +10,7 @@ class CustomLoginRequiredMixin(LoginRequiredMixin):
 
     permission_denied_message = "You are not logged in, please log in."
 
-    def dispatch(self, request: HttpRequest, *args, **kwargs):
+    def dispatch(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         if not request.user.is_authenticated:
             messages.add_message(
                 request, messages.ERROR, self.permission_denied_message
@@ -34,7 +34,7 @@ class DeleteMixin(DeleteView):
     error_message = ""
     error_url = ""
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         try:
             return super().post(request, *args, **kwargs)
         except ProtectedError:

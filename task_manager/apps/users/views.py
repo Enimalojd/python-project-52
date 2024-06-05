@@ -14,7 +14,7 @@ class Index(ListView):
     template_name = "users/users.html"
     context_object_name = "users"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs) -> dict:
         context = super().get_context_data(**kwargs)
         context["current_user"] = self.request.user
         return context
