@@ -17,6 +17,7 @@ python-dotenv = "^1.0.1"
 django-filter = "^24.2"
 psycopg2-binary = "^2.9.9"
 django-ninja = "^1.1.0"
+gunicorn = "^22.0.0"
 
 
 [tool.poetry.group.dev.dependencies]

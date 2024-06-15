@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", default=False) == "True"
 
 ALLOWED_HOSTS = [
     "0.0.0.0",
@@ -38,6 +38,9 @@ ALLOWED_HOSTS = [
     "webserver",
 ]
 
+DEPLOY = os.getenv("DEPLOY", default=None)
+if DEPLOY:
+    ALLOWED_HOSTS.append(DEPLOY)
 
 # Application definition
 
@@ -91,6 +94,8 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 DATABASES = {
     "default": dj_database_url.config(
@@ -155,5 +160,5 @@ ROLLBAR = {
     "access_token": os.getenv("ROLLBAR_ACCESS_TOKEN"),
     "environment": "development" if DEBUG else "production",
     "branch": "master",
-    "root": "/absolute/path/to/code/root",
+    "root": BASE_DIR,
 }
