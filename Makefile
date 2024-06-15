@@ -1,7 +1,7 @@
 DC = docker compose
 LOGS = docker logs
 ENV = --env-file .env
-APP_FILE = docker_compose/app.yaml
+APP_FILE = docker-compose.yaml
 APP_CONTAINER = main-app
 EXEC = docker exec -it
 MANAGE_PY = python manage.py
