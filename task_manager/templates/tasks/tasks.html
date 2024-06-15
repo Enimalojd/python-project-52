@@ -29,21 +29,21 @@
 
     <tbody>
         {% if tasks %}
-        {% for task in tasks %}
-        <tr>
-            <td>{{ task.id }}</td>
-            <td><a href="{% url 'current_task' task.id %}">{{ task.name }}</a></td>
-            <td>{{ task.status }}</td>
-            <td>{{ task.author }}</td>
-            <td>{{ task.executor }}</td>
-            <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
-            <td>
-                <a href="{% url 'update_task' task.id %}" role="button">{% translate 'Update' %}</a>
-                <br>
-                <a href="{% url 'delete_task' task.id %}" role="button">{% translate 'Delete' %}</a>
-            </td>
-        </tr>
-        {% endfor %}
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td><a href="{% url 'current_task' task.id %}">{{ task.name }}</a></td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.author }}</td>
+                <td>{{ task.executor }}</td>
+                <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'update_task' task.id %}" role="button">{% translate 'Update' %}</a>
+                    <br>
+                    <a href="{% url 'delete_task' task.id %}" role="button">{% translate 'Delete' %}</a>
+                </td>
+            </tr>
+            {% endfor %}
         {% endif %}
     </tbody>
 </table>

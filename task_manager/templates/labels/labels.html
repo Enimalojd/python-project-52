@@ -14,18 +14,20 @@
             </tr>
         </thead>
         <tbody>
-            {% for label in labels %}
-            <tr>
-                <td>{{ label.id }}</td>
-                <td>{{ label.name }}</td>
-                <td>{{ label.created_at }}</td>
-                <td>
-                    <a href="{% url 'update_label' label.id %}">{% translate "Update" %}</a>
-                    <br>
-                    <a href="{% url 'delete_label' label.id %}">{% translate "Delete" %}</a>
-                </td>
-            </tr>
-            {% endfor %}
+            {% if labels %}
+                {% for label in labels %}
+                <tr>
+                    <td>{{ label.id }}</td>
+                    <td>{{ label.name }}</td>
+                    <td>{{ label.created_at }}</td>
+                    <td>
+                        <a href="{% url 'update_label' label.id %}">{% translate "Update" %}</a>
+                        <br>
+                        <a href="{% url 'delete_label' label.id %}">{% translate "Delete" %}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
         </tbody>
     </table>
 </div>

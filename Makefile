@@ -37,3 +37,11 @@ run-test:
 .PHONY: lint
 lint:
 	${EXEC} ${APP_CONTAINER} flake8
+
+.PHONY: local-migrate
+local-migrate:
+	python manage.py migrate
+
+.PHONY: local-start
+loca-start:
+	gunicorn task_manager.wsgi
